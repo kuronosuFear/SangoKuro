@@ -6,12 +6,12 @@ Hello! This is kuronosuFear here and I hope you enjoy these translation tools th
 Usage:
 
 Sangokushi-LinkDataXtractor
- - Searches for "LINKDATA_A.BIN" in the same directory
+ - Searches for "LINKDATA_A.BIN" in the current directory
  - Places extracted files in the "<current directory>\Sangokushi-Xtracted" folder
 
 Sangokushi-LinkDataRebuilder
  - Searches for "<current directory>\Sangokushi-Xtracted" folder
- - Rebuilds the contents of the directory as "LINKDATA_A.BIN-new" in the same directory
+ - Rebuilds the contents of the directory as "LINKDATA_A.BIN-new" in the current directory
 
 Sangokushi-GenerateTSVFiles
  - Searches for "<current directory>\Sangokushi-Xtracted" folder
