@@ -3,7 +3,7 @@ Translation tools for Yo-kai Watch Sangokushi
 
 Hello! This is kuronosuFear here and I hope you enjoy these translation tools that I made for Yo-kai Watch Sangokushi!
 
-Download link: https://github.com/kuronosuFear/SangoKuro/releases/download/v1.0/SangoKuro.7z
+Download link (includes 64-bit Windows compiled executables): https://github.com/kuronosuFear/SangoKuro/releases/download/v1.0/SangoKuro.7z
 
 Usage:
 
