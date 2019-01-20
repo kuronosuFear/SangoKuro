@@ -3,7 +3,7 @@ Translation tools for Yo-kai Sangokushi
 
 Hello! This is kuronosuFear here and I hope you enjoy these translation tools that I made for Yo-kai Sangokushi!
 
-Download link (includes 64-bit Windows compiled executables): https://github.com/kuronosuFear/SangoKuro/releases/download/v1.0/SangoKuro.7z
+Download link (includes 64-bit Windows compiled executables): https://github.com/kuronosuFear/SangoKuro/releases/download/v1.1/SangoKuro.7z
 
 Usage:
 
