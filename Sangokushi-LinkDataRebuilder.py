@@ -81,6 +81,8 @@ for subdir, dirs, files in os.walk(path):
     	#if (intIndex>=2):
     		#break
 
+print ('===Assembling the pieces, please wait===')
+
 with open('LINKDATA-Table', 'wb') as fo:
 	fo.write(Table)
 	

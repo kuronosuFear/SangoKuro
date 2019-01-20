@@ -28,7 +28,13 @@ def type1recompile():
 			filename = choppedText[x][0]
 			if(filename=='END'):
 				break
-			allStrings.append((choppedText[x][6]+b'\x00').replace('\\n', b'\x0a'))
+			tempy = (choppedText[x][6]+b'\x00').replace('\\n', b'\x0a')
+			tempy = tempy.replace('NULL', b'\x00')
+			tempy = tempy.replace('\x27', '\xc2\xb4') #replace apostrophe with accute accent
+			tempy = tempy.replace('...', '\xe2\x80\xa6') #replace triple-dots with ellipses
+			tempy = tempy.replace('"', '\xe2\x80\xb3') #replace doublequotes with double prime
+			tempy = tempy.replace('\x00\x00', b'\x00')
+			allStrings.append(tempy)
 			z+=1
 			if(choppedText[x+1][0] != filename):
 				EndIndex += z
@@ -70,7 +76,13 @@ def type3recompile():
 			filename = choppedText[x][0]
 			if(filename=='END'):
 				break
-			allStrings.append((binascii.unhexlify(choppedText[x][6][1:17])+choppedText[x][6][18:]+b'\x00').replace('\\n', b'\x0a'))
+			tempy = (choppedText[x][6][18:]+b'\x00').replace('\\n', b'\x0a')
+			tempy = tempy.replace('NULL', b'\x00')
+			tempy = tempy.replace('\x27', '\xc2\xb4') #replace apostrophe with accute accent
+			tempy = tempy.replace('...', '\xe2\x80\xa6') #replace triple-dots with ellipses
+			tempy = tempy.replace('"', '\xe2\x80\xb3') #replace doublequotes with double prime
+			tempy = tempy.replace('\x00\x00', b'\x00')
+			allStrings.append((binascii.unhexlify(choppedText[x][6][1:17])+tempy))
 			z+=1
 			if(choppedText[x+1][0] != filename):
 				EndIndex += z
@@ -113,6 +125,9 @@ def type4recompile():
 				break
 			tempy = (choppedText[x][6]+b'\x00').replace('\\n', b'\x0a')
 			tempy = tempy.replace('NULL', b'\x00')
+			tempy = tempy.replace('\x27', '\xc2\xb4') #replace apostrophe with accute accent
+			tempy = tempy.replace('...', '\xe2\x80\xa6') #replace triple-dots with ellipses
+			tempy = tempy.replace('"', '\xe2\x80\xb3') #replace doublequotes with double prime
 			tempy = tempy.replace('\x00\x00', b'\x00')
 			entryOneLength+=len(tempy)
 			allStrings.append(tempy)
@@ -171,6 +186,9 @@ def type2recompile():
 				entryCounter+=1
 			tempy = (choppedText[x][6]+b'\x00').replace('\\n', b'\x0a')
 			tempy = tempy.replace('NULL', b'\x00')
+			tempy = tempy.replace('\x27', '\xc2\xb4') #replace apostrophe with accute accent
+			tempy = tempy.replace('...', '\xe2\x80\xa6') #replace triple-dots with ellipses
+			tempy = tempy.replace('"', '\xe2\x80\xb3') #replace doublequotes with double prime
 			tempy = tempy.replace('\x00\x00', b'\x00')
 			entryStringLength+=len(tempy)
 			allStrings.append(tempy)
