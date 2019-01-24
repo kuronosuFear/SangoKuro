@@ -9,6 +9,9 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 path = 'Sangokushi-Translated\\'
 
+def pad(s):
+    return s + b"\x00" * (16 - len(s) % 16)
+
 def chunks(l, n):
     return [l[i:i+n] for i in range(0, len(l), n)]
 
@@ -82,7 +85,7 @@ def type3recompile():
 			tempy = tempy.replace('...', '\xe2\x80\xa6') #replace triple-dots with ellipses
 			tempy = tempy.replace('"', '\xe2\x80\xb3') #replace doublequotes with double prime
 			tempy = tempy.replace('\x00\x00', b'\x00')
-			allStrings.append((binascii.unhexlify(choppedText[x][6][1:17])+tempy))
+			allStrings.append(pad(binascii.unhexlify(choppedText[x][6][1:17])+tempy))
 			z+=1
 			if(choppedText[x+1][0] != filename):
 				EndIndex += z
@@ -92,15 +95,16 @@ def type3recompile():
 			break
 		fileTable = b'\x62\x29\x00\x00' + struct.pack("<I", len(allStrings))
 		fileData = ''
-		dataOffset = (len(allStrings)*4)+8
+		dataOffset = (len(allStrings)*4)+ 8 + (16-((len(allStrings)*4)+ 8)%16)
 		for y in range(0, len(allStrings)):
 			fileTable += struct.pack("<I", dataOffset)
 			dataOffset+=len(allStrings[y])
 			fileData += allStrings[y]
+		fileTable+=(b"\x00" * (16-len(fileTable)%16))
 		fileTable+=fileData
 		with open(path+filename, 'wb') as fo:
 			fo.write(fileTable) #erase contents
-		print('Generated: ' + filename + '             ', end='\r') 
+		print('Generated: ' + filename + '             ', end='\r')
 		allStrings = []
 		x+=1
 	print('\nType3 files done...')
