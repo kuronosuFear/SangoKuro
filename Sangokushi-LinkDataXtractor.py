@@ -40,6 +40,8 @@ def ktdecompress(filename, stream, address, rawsize, decompressedsize, entryNum)
             extension = 'nfc'
         elif decompFile[:4] == b'\x02\x00\x00\x00':  # Use bytes instead of a string
             extension = 'sdb'
+        elif decompFile[:4] == b'\x1d\x78\x33\x01':  # Use bytes instead of a string
+            extension = 'x3'
         elif set(decompFile[:4]).issubset(allowedChars):
             extension = decompFile[:4].decode('ascii')  # Convert bytes to string
             if set(decompFile[4:8]).issubset(allowedChars):
